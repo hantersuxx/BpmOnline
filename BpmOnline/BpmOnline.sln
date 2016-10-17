@@ -19,4 +19,18 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(CrmCodeGeneration) = preSolution
+		UseSSL = True
+		UseIFD = False
+		UseOnline = False
+		UseOffice365 = False
+		ServerName = 
+		ServerPort = 
+		HomeRealm = 
+		Domain = 
+		WindowsAuthorization = False
+		Organization = DEV-CRM
+		IncludeEntities = account,contact,lead,opportunity,systemuser
+		IncludeNonStandard = False
+	EndGlobalSection
 EndGlobal
