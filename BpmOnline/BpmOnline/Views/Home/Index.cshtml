@@ -33,11 +33,17 @@
                         @Html.DisplayFor(modelItem => item.JobTitle)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.BirthDate)
+                        @Html.DisplayFor(modelItem => item.BirthDate, "ShortDateTime")
                         <br />
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Id)
+                        @Html.ActionLink("Update", "Update", "Home",
+                       new { updateId = item.Id },
+                       new { @class = "btn-link" }) |
+                        @Html.ActionLink("Delete", "Delete", "Home",
+                       new { deleteId = item.Id },
+                       new { @class = "btn-link" })
+
                     </td>
                 </tr>
             }

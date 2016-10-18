@@ -178,6 +178,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AuthService.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\OdataHttpQuery.cs" />
     <Compile Include="Models\Proxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\EntityDataServiceReference\Reference.cs">
@@ -241,13 +243,13 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Error.html" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Service References\EntityDataService.edmx" />
     <Content Include="Service References\EntityDataServiceReference\service.edmx" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

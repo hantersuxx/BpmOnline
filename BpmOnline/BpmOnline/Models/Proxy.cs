@@ -20,7 +20,7 @@ namespace BpmOnline.Models
             e.Request = request;
         }
 
-        public static IQueryable<Contact> GetOdataCollectioByLinq()
+        public static IQueryable<BpmOnline.EntityDataServiceReference.Contact> GetOdataCollectioByLinq()
         {
             // Создание контекста приложения BPMonline.
             var context = new BPMonline(serverUri);

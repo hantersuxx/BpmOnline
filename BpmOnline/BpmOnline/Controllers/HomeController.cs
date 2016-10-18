@@ -1,4 +1,4 @@
-﻿using BpmOnline.EntityDataServiceReference;
+﻿//using BpmOnline.EntityDataServiceReference;
 using BpmOnline.Models;
 using System;
 using System.Collections.Generic;
@@ -11,26 +11,48 @@ namespace BpmOnline.Controllers
 {
     public class HomeController : Controller
     {
+        IQueryable<EntityDataServiceReference.Contact> contacts = Proxy.GetOdataCollectioByLinq();
+
         public ActionResult Index(int? page)
         {
-            var contacts = Proxy.GetOdataCollectioByLinq();
             int pageSize = 15;
             int pageNumber = (page ?? 1);
             return View(contacts.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult Create()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View(new Contact());
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Create(Contact contact)
         {
-            ViewBag.Message = "Your contact page.";
+            if (ModelState.IsValid)
+            {
+                OdataHttpQuery.CreateBpmEntityByOdataHttp(contact);
+                return RedirectToAction("Index", "Home");
+            }
+            return View(contact);
+        }
 
-            return View();
+        [HttpGet]
+        public ActionResult Update(Guid? updateId)
+        {
+            if (updateId != null)
+            {
+                return HttpNotFound();
+            }
+
+            var bpmContact = contacts.FirstOrDefault(e => e.Id == updateId);
+            if (bpmContact == null)
+            {
+                return HttpNotFound();
+            }
+            Contact contact = new Contact();
+            contact.Init(bpmContact.Id, bpmContact.Name, bpmContact.MobilePhone, bpmContact.Dear, bpmContact.JobTitle, bpmContact.BirthDate);
+            return Json(contact);
         }
     }
 }

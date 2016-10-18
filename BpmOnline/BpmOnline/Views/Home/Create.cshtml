@@ -1,0 +1,61 @@
+﻿@model BpmOnline.Models.Contact
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create form</h2>
+<br />
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { name = "createForm" }))
+{
+    <div class="form-group row">
+        @Html.LabelFor(c => c.Name, new { @class = "col-xs-2" })
+        <div class="col-xs-10">
+            @Html.TextBoxFor(c => c.Name, new { @class = "form-control", placeholder = "Enter name" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(c => c.Name)
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(c => c.MobilePhone, new { @class = "col-xs-2" })
+        <div class="col-xs-10">
+            @Html.TextBoxFor(c => c.MobilePhone, new { @class = "form-control", placeholder = "Enter mobile phone", type = "tel" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(c => c.MobilePhone)
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(c => c.Dear, new { @class = "col-xs-2" })
+        <div class="col-xs-10">
+            @Html.TextBoxFor(c => c.Dear, new { @class = "form-control", placeholder = "Enter dear" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(c => c.Dear)
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(c => c.JobTitle, new { @class = "col-xs-2" })
+        <div class="col-xs-10">
+            @Html.TextBoxFor(c => c.JobTitle, new { @class = "form-control", placeholder = "Enter job title" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(c => c.JobTitle)
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(c => c.BirthDate, new { @class = "col-xs-2" })
+        <div class="col-xs-10">
+            @Html.TextBoxFor(c => c.BirthDate, new { @class = "form-control", placeholder = "Select birth date", type = "date" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(c => c.BirthDate)
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-offset-2 col-xs-10">
+            <button class="btn btn-primary" type="submit" id="submit">Create</button>
+        </div>
+    </div>
+}
