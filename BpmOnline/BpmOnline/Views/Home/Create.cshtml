@@ -47,7 +47,7 @@
     <div class="form-group row">
         @Html.LabelFor(c => c.BirthDate, new { @class = "col-xs-2" })
         <div class="col-xs-10">
-            @Html.TextBoxFor(c => c.BirthDate, new { @class = "form-control", placeholder = "Select birth date", type = "date" })
+            @Html.TextBoxFor(c => c.BirthDate, "{0:dd/MM/yyyy}", new { @class = "form-control", placeholder = "Select birth date" })
             <div class="text-danger">
                 @Html.ValidationMessageFor(c => c.BirthDate)
             </div>
