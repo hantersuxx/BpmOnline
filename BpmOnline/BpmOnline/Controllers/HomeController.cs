@@ -40,19 +40,43 @@ namespace BpmOnline.Controllers
         [HttpGet]
         public ActionResult Update(Guid? updateId)
         {
-            if (updateId != null)
+            if (updateId == null)
             {
                 return HttpNotFound();
             }
 
-            var bpmContact = contacts.FirstOrDefault(e => e.Id == updateId);
+            var bpmContact = (from c in contacts
+                              where c.Id == updateId
+                              select c).FirstOrDefault();
             if (bpmContact == null)
             {
                 return HttpNotFound();
             }
+
             Contact contact = new Contact();
             contact.Init(bpmContact.Id, bpmContact.Name, bpmContact.MobilePhone, bpmContact.Dear, bpmContact.JobTitle, bpmContact.BirthDate);
-            return Json(contact);
+            return View(contact);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                OdataHttpQuery.UpdateExistingBpmEntityByOdataHttp(contact);
+                return RedirectToAction("Index", "Home");
+            }
+            return View(contact);
+        }
+
+        public ActionResult Delete(Guid deleteId)
+        {
+            if (deleteId == null)
+            {
+                return HttpNotFound();
+            }
+            OdataHttpQuery.DeleteBpmEntityByOdataHttp(deleteId);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

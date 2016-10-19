@@ -17,7 +17,7 @@ namespace BpmOnline.Models
 
         [Required]
         [StringLength(20, MinimumLength = 1)]
-        [RegularExpression(@"^\+(?:[0-9] ?){6,14}[0-9]$", ErrorMessage = "Not a valid Phone number. Mobile phone should start with a plus sign.")]
+        [RegularExpression(@"^\+(?:[0-9] ?){6,14}[0-9]$", ErrorMessage = "Not a valid Phone number. Mobile phone should start with a plus sign and contain numbers and spaces.")]
         [DataType(DataType.PhoneNumber)]
         public string MobilePhone { get; set; }
 
